@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Requests\ProductStoreRequest;
 use App\Http\Requests\ProductUpdateRequest;
+use App\Models\User;
 use App\Models\Product;
 use App\Models\ProductDetail;
 
@@ -94,13 +95,13 @@ class ProductController extends Controller
      */
     public function update(ProductUpdateRequest $request, $id)
     {
-        $user = User::find($id);
-        $user->name = $request->name;
-        $user->level_id = intval($request->level);
-        $user->email = $request->email;
-        $user->password = Hash::make($request->password);
-        if($user->save())
-            return redirect()->route('products.index')->with('status', 'Usuário atualizado com sucesso!');
+        $product = Product::find($id);
+        $product->name = $request->name;
+        $product->description = $request->description;
+        $product->amount = $request->amount;
+        $product->value = $request->value;
+        if($product->save())
+            return redirect()->route('products.index')->with('status', 'Produto atualizado com sucesso!');
         else
             return redirect()->back()->withInput()->withErrors(['Os dados informados não conferem!']);
     }

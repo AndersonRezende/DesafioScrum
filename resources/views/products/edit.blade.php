@@ -26,8 +26,8 @@
 	</div>
 
 	<div class="form-group">
-		<label for="value">Valor</label>
-		<input type="file" class="form-control @error('file') is-invalid @enderror" id="fileitems" name="fileitems[]" required autofocus multiple>
+		<label for="value">Arquivo</label>
+		<input type="file" class="form-control @error('file') is-invalid @enderror" id="fileitems" name="fileitems[]" autofocus multiple>
 	</div>
 
 	<button name="submit" type="submit" class="btn btn-primary" value="ok">Salvar</button>

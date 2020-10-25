@@ -14,7 +14,6 @@
                         </div>
                     @endif
 
-                    {{ __('You are logged in!') }}
                     {{ Auth::user()->level->description }}
                 </div>
             </div>

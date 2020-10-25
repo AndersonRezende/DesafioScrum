@@ -46,5 +46,9 @@ Route::prefix('admin')->group(function(){
 			Route::resource('clientes', App\Http\Controllers\ClientController::class)->names('clients')->parameters(['clientes' => 'client']);
 			Route::resource('produtos', App\Http\Controllers\ProductController::class)->names('products')->parameters(['produtos' => 'product']);
 		});
+
+		Route::group(['middleware' => 'check_access_level:2'], function(){
+			Route::resource('compras', App\Http\Controllers\PurchaseController::class)->names('purchases')->parameters(['compras' => 'purchase']);
+		});
 	});
 });

@@ -37,6 +37,7 @@
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('home') }}">Início</a>
                 </li>
+                @if (Auth::user()->level->id == 1)
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('users.index') }}">Usuários</a>
                 </li>
@@ -45,6 +46,10 @@
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('products.index') }}">Produtos</a>
+                </li>
+                @endif
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('purchases.index') }}">Compras</a>
                 </li>
             </ul>
             <div class="form-inline mt-2 mt-md-0">

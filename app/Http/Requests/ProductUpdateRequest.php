@@ -18,22 +18,6 @@ class ProductUpdateRequest extends FormRequest
     }
 
     /**
-     * Get custom attributes for validator errors.
-     *
-     * @return array
-     */
-    public function attributes()
-    {
-        return [
-            'name' => 'Nome',
-            'description' => 'Descrição',
-            'value' => 'Valor',
-            'status' => 'Status',
-            'fileitems' => 'Arquivos'
-        ];
-    }
-
-    /**
      * Get the validation rules that apply to the request.
      *
      * @return array
@@ -45,7 +29,6 @@ class ProductUpdateRequest extends FormRequest
             'description' => 'descrição',
             'value' => 'valor',
             'amount' => 'estoque',
-            'fileitems' => 'arquivos'
         ];
     }
     
@@ -60,8 +43,8 @@ class ProductUpdateRequest extends FormRequest
             'name' => ['required', 'string', 'max:255'],
             'description' => ['required', 'string', 'min:1', 'max:255'],
             'value' => ['required', 'numeric'],
-            'amount' => ['required', 'numeric'],
-            'fileitems' => ['required', new ProductFileUpload]
+            'amount' => ['required', 'integer'],
+            'fileitems' => [new ProductFileUpload]
         ];
     }
 }

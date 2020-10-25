@@ -24,7 +24,10 @@
 
   <div class="col-md-8 order-md-1">
     <h4 class="mb-3">Dados pessoais</h4>
-    <form class="needs-validation" novalidate="">
+    <form method="post" action="{{ route('shoppingcarts.store') }}">
+      @csrf
+      <input type="hidden" name="product" value="{{ $product->id }}">
+
       <div class="mb-3">
         <label for="name">Nome</label>
         <div class="input-group">

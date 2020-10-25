@@ -1,0 +1,137 @@
+/* Links */
+a {
+    color: #242424;
+    text-decoration: none;
+}
+
+a:focus, a:hover {
+    
+    text-decoration: none;
+}
+
+a:focus {
+    outline: none;
+}
+
+#navbar {
+    background: #222328;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+#navbar li {
+    padding-left: 15px;
+}
+
+#navbar .nav-link {
+    font-family: "Poppins", sans-serif;
+    font-weight: 500;
+    color: #fff;
+    text-transform: uppercase;
+    font-size: 14px;
+    letter-spacing: .5px;
+    transition: all .25s ease;
+}
+
+#navbar .nav-link:hover, #navbar .nav-link:focus {
+    
+}
+
+#navbar .btn {
+    padding: .5rem 1.5rem;
+    color: #fff;
+}
+
+.header-top {
+    background: #222328;
+    color: #919194;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.header-top .header-top-socials {
+    border-right: 1px solid rgba(255, 255, 255, 0.05);
+    padding: 12px 0px;
+}
+
+.header-top .header-top-socials a {
+    color: #919194;
+    margin-right: 15px;
+    font-size: 16px;
+}
+
+.header-top .header-top-info {
+    color: #919194;
+    font-size: 16px;
+}
+
+.header-top .header-top-info a span {
+    color: #fff;
+}
+
+.header-top .header-top-info a {
+    margin-left: 35px;
+    color: #919194;
+}
+
+.navbar-brand {
+    color: #fff;
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+
+.navbar-brand span {
+    
+}
+
+.dropdown-menu {
+    visibility: hidden;
+    filter: alpha(opacity=0);
+    opacity: 0;
+    transition: all .2s ease-in, visibility 0s linear .2s, -webkit-transform .2s linear;
+    transition: all .2s ease-in, visibility 0s linear .2s, transform .2s linear;
+    transition: all .2s ease-in, visibility 0s linear .2s, transform .2s linear, -webkit-transform .2s linear;
+    -webkit-transition: all .2s ease-in, visibility 0s linear .2s, -webkit-transform .2s linear;
+    -o-transition: all .2s ease-in, visibility 0s linear .2s, -o-transform .2s linear;
+    -ms-transition: all .2s ease-in, visibility 0s linear .2s, -ms-transform .2s linear;
+    width: 250px;
+    margin-top: 15px;
+    padding: 0px;
+    border-radius: 0px;
+    display: block;
+}
+
+.dropdown-toggle::after {
+    display: none;
+}
+
+.dropdown:hover .dropdown-menu {
+    visibility: visible;
+    transition: all .45s ease 0s;
+    opacity: 1;
+}
+
+.dropdown-item {
+    padding: .8rem 1.5rem;
+    text-transform: uppercase;
+    font-size: 14px;
+}
+
+.dropdown-item:hover {
+    
+    color: #fff;
+}
+
+ul.dropdown-menu li {
+    padding-left: 0px !important;
+}
+
+#linkOperacoesTable {
+    padding-left: 10px;
+    padding-right: 10px;
+    color: #212529;
+}
+
+#flash-msg{
+    position: absolute;
+    z-index: 9999;
+    right: 0;
+}

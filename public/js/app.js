@@ -6360,6 +6360,17 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./node_modules/bootstrap/scss/bootstrap.scss":
+/*!****************************************************!*\
+  !*** ./node_modules/bootstrap/scss/bootstrap.scss ***!
+  \****************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+
 /***/ "./node_modules/jquery/dist/jquery.js":
 /*!********************************************!*\
   !*** ./node_modules/jquery/dist/jquery.js ***!
@@ -49868,26 +49879,15 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./resources/sass/app.scss":
-/*!*********************************!*\
-  !*** ./resources/sass/app.scss ***!
-  \*********************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-
-/***/ }),
-
 /***/ 0:
-/*!*************************************************************!*\
-  !*** multi ./resources/js/app.js ./resources/sass/app.scss ***!
-  \*************************************************************/
+/*!********************************************************************************!*\
+  !*** multi ./resources/js/app.js ./node_modules/bootstrap/scss/bootstrap.scss ***!
+  \********************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(/*! /mnt/3CBAC176BAC12D68/Documentos/Projetos/PHP/Laravel/DesafioScrum/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /mnt/3CBAC176BAC12D68/Documentos/Projetos/PHP/Laravel/DesafioScrum/resources/sass/app.scss */"./resources/sass/app.scss");
+module.exports = __webpack_require__(/*! /mnt/3CBAC176BAC12D68/Documentos/Projetos/PHP/Laravel/DesafioScrum/node_modules/bootstrap/scss/bootstrap.scss */"./node_modules/bootstrap/scss/bootstrap.scss");
 
 
 /***/ })

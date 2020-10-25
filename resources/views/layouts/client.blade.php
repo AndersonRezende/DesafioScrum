@@ -7,7 +7,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>{{ config('app.name', 'Loja') }}</title>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
@@ -27,7 +27,7 @@
 <body>
 
     <nav class="navbar navbar-expand-md navbar-dark bg-dark mb-4">
-        <a class="navbar-brand mr-auto mr-lg-0" href="#">{{ config('app.name', 'Laravel') }}</a>
+        <a class="navbar-brand mr-auto mr-lg-0" href="#">{{ config('app.name', 'Loja') }}</a>
         <button class="navbar-toggler p-0 border-0" type="button" data-toggle="offcanvas">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -35,36 +35,27 @@
         <div class="navbar-collapse offcanvas-collapse" id="navbarsExampleDefault">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('home') }}">Início</a>
-                </li>
-                @if (Auth::user()->level->id == 1)
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ route('users.index') }}">Usuários</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ route('clients.index') }}">Clientes</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ route('products.index') }}">Produtos</a>
-                </li>
-                @endif
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ route('purchases.index') }}">Compras</a>
+                    <a class="nav-link" href="{{ route('client.homepage') }}">Início</a>
                 </li>
             </ul>
             <div class="form-inline mt-2 mt-md-0">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{ Auth::user()->name }}</a>
+                        @if (Auth::check())
+                        <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            {{ Auth::user()->name }} 
+                        </a>
                         <div class="dropdown-menu" aria-labelledby="dropdown01">
-                            <a class="text-dark" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                            <a class="nav-link text-dark" href="{{ route('client.logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">
                                 Logout
                             </a>
-
-                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                            <form id="logout-form" action="{{ route('client.logout') }}" method="POST" style="display: none;">
                                 @csrf
                             </form>
                         </div>
+                        @else
+                        <a class="nav-link" href="{{ route('client.login') }}">Login</a>
+                        @endif
                     </li>
                 </ul>
             </div>

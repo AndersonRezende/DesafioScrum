@@ -2,94 +2,62 @@
 @section('content')
 
 <div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
-	<h1 class="display-4">Pricing</h1>
-	<p class="lead">Quickly build an effective pricing table for your potential customers with this Bootstrap example. It’s built with default Bootstrap components and utilities with little customization.</p>
+	<h1 class="display-4">Produtos</h1>
+	<p class="lead">Veja nossos produtos.</p>
 </div>
 
 <div class="container">
-	<div class="card-deck mb-3 text-center">
-		<div class="card mb-4 shadow-sm">
-			<div class="card-header">
-				<h4 class="my-0 font-weight-normal">Free</h4>
-			</div>
-			<div class="card-body">
-				<h1 class="card-title pricing-card-title">$0 <small class="text-muted">/ mo</small></h1>
-				<ul class="list-unstyled mt-3 mb-4">
-					<li>10 users included</li>
-					<li>2 GB of storage</li>
-					<li>Email support</li>
-					<li>Help center access</li>
-				</ul>
-				<button type="button" class="btn btn-lg btn-block btn-outline-primary">Sign up for free</button>
-			</div>
-		</div>
-		<div class="card mb-4 shadow-sm">
-			<div class="card-header">
-				<h4 class="my-0 font-weight-normal">Pro</h4>
-			</div>
-			<div class="card-body">
-				<h1 class="card-title pricing-card-title">$15 <small class="text-muted">/ mo</small></h1>
-				<ul class="list-unstyled mt-3 mb-4">
-					<li>20 users included</li>
-					<li>10 GB of storage</li>
-					<li>Priority email support</li>
-					<li>Help center access</li>
-				</ul>
-				<button type="button" class="btn btn-lg btn-block btn-primary">Get started</button>
-			</div>
-		</div>
-		<div class="card mb-4 shadow-sm">
-			<div class="card-header">
-				<h4 class="my-0 font-weight-normal">Enterprise</h4>
-			</div>
-			<div class="card-body">
-				<h1 class="card-title pricing-card-title">$29 <small class="text-muted">/ mo</small></h1>
-				<ul class="list-unstyled mt-3 mb-4">
-					<li>30 users included</li>
-					<li>15 GB of storage</li>
-					<li>Phone and email support</li>
-					<li>Help center access</li>
-				</ul>
-				<button type="button" class="btn btn-lg btn-block btn-primary">Contact us</button>
+	<div class="form-row justify-content-center" id="description-group">
+		@foreach($products as $product)
+		<div class="form-group col-md-4">
+			<div class="card mb-4 shadow-sm">
+				<div class="card-header">
+					<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" >
+						<div class="carousel-inner">
+							{{ $first = true }}
+							@foreach($product->productsDetail as $item)
+							<img src="{{ url('public/products/'.$item->filename) }}" alt="Produto">
+							{{ $first = false }}
+							@endforeach
+
+						</div>
+						<a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+							<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+							<span class="sr-only">Previous</span>
+						</a>
+						<a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+							<span class="carousel-control-next-icon" aria-hidden="true"></span>
+							<span class="sr-only">Next</span>
+						</a>
+					</div>
+					<h4 class="my-0 font-weight-normal">{{ $product->name }}</h4>
+				</div>
+				<div class="card-body">
+					<h1 class="card-title pricing-card-title">R${{ $product->value }}</small></h1>
+					<p>{{ $product->description }}</p>
+					@if($product->amount > 1)
+					<p>Apenas {{ $product->amount }} itens restantes.</p>
+					@else
+					<p>Apenas {{ $product->amount }} item restante.</p>
+					@endif
+					
+					<form action="{{ route('shoppingcarts.create', ['product' => $product->id]) }}" method="post">
+						@csrf
+						<button class="btn btn-lg btn-block btn-primary" type="submit" value="Remover">
+							Comprar
+						</button>
+					</form>
+				</div>
 			</div>
 		</div>
+		@endforeach
 	</div>
 
+
+
 	<footer class="pt-4 my-md-5 pt-md-5 border-top">
-		<div class="row">
-			<div class="col-12 col-md">
-				<img class="mb-2" src="/docs/4.5/assets/brand/bootstrap-solid.svg" alt="" width="24" height="24">
-				<small class="d-block mb-3 text-muted">© 2017-2020</small>
-			</div>
-			<div class="col-6 col-md">
-				<h5>Features</h5>
-				<ul class="list-unstyled text-small">
-					<li><a class="text-muted" href="#">Cool stuff</a></li>
-					<li><a class="text-muted" href="#">Random feature</a></li>
-					<li><a class="text-muted" href="#">Team feature</a></li>
-					<li><a class="text-muted" href="#">Stuff for developers</a></li>
-					<li><a class="text-muted" href="#">Another one</a></li>
-					<li><a class="text-muted" href="#">Last time</a></li>
-				</ul>
-			</div>
-			<div class="col-6 col-md">
-				<h5>Resources</h5>
-				<ul class="list-unstyled text-small">
-					<li><a class="text-muted" href="#">Resource</a></li>
-					<li><a class="text-muted" href="#">Resource name</a></li>
-					<li><a class="text-muted" href="#">Another resource</a></li>
-					<li><a class="text-muted" href="#">Final resource</a></li>
-				</ul>
-			</div>
-			<div class="col-6 col-md">
-				<h5>About</h5>
-				<ul class="list-unstyled text-small">
-					<li><a class="text-muted" href="#">Team</a></li>
-					<li><a class="text-muted" href="#">Locations</a></li>
-					<li><a class="text-muted" href="#">Privacy</a></li>
-					<li><a class="text-muted" href="#">Terms</a></li>
-				</ul>
-			</div>
+		<div class="container">
+			<span class="text-muted">Copyright © 2020.</span>
 		</div>
 	</footer>
 </div>

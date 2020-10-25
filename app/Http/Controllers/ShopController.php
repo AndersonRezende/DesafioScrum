@@ -14,18 +14,7 @@ class ShopController extends Controller
      */
     public function index()
     {
-        $products = Product::all();
+        $products = Product::where('amount', '>', '0')->get();
         return view('shop.index', ['products' => $products]);
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
     }
 }

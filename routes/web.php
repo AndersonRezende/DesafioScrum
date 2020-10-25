@@ -13,15 +13,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-	return view('welcome');
-});
+//Route::get('/', function () {return view('welcome');});
 
-Auth::routes();
-
-Route::get('/', [App\Http\Controllers\ShopController::class, 'index'])->name('client.shop.index');
+Route::get('/', [App\Http\Controllers\ShopController::class, 'index'])->name('client.homepage');
 Route::get('/home', [App\Http\Controllers\ShopController::class, 'index'])->name('client.shop.index');
 Route::get('/shop', [App\Http\Controllers\ShopController::class, 'index'])->name('client.shop.index');
+
+Auth::routes();
 
 Route::prefix('cliente')->group(function(){
 	Route::get('/login', [App\Http\Controllers\Auth\ClientLoginController::class, 'showLoginForm'])->name('client.login');
@@ -29,9 +27,12 @@ Route::prefix('cliente')->group(function(){
 	Route::post('/logout', [App\Http\Controllers\Auth\ClientLoginController::class, 'logout'])->name('client.logout');
 
 	Route::group(['middleware' => ['auth:client']], function(){
-		Route::get('/', function () {
-			return view('welcome');
-		})->name('client.home');
+		Route::get('/', [App\Http\Controllers\ShopController::class, 'index'])->name('client.shop.index');
+		Route::get('/home', [App\Http\Controllers\ShopController::class, 'index'])->name('client.shop.index');
+		Route::get('/shop', [App\Http\Controllers\ShopController::class, 'index'])->name('client.shop.index');
+
+		Route::post('/carrinho/{product}', [App\Http\Controllers\ShoppingCartController::class, 'create'])->name('shoppingcarts.create');
+		Route::post('/carrinho', [App\Http\Controllers\ShoppingCartController::class, 'store'])->name('shoppingcarts.store');
 	});
 });
 

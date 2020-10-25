@@ -14,16 +14,34 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+	return view('welcome');
 });
 
 Auth::routes();
 
+Route::prefix('cliente')->group(function(){
+	Route::get('/login', [App\Http\Controllers\Auth\ClientLoginController::class, 'showLoginForm'])->name('client.login');
+	Route::post('/login', [App\Http\Controllers\Auth\ClientLoginController::class, 'login'])->name('client.login.submit');
+	Route::post('/logout', [App\Http\Controllers\Auth\ClientLoginController::class, 'logout'])->name('client.logout');
 
-Route::group(['middleware' => ['auth']], function(){
-	Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+	Route::group(['middleware' => ['auth:client']], function(){
+		Route::get('/home', function () {
+			return view('welcome');
+		})->name('client.home');
+		Route::get('/', function () {
+			return view('welcome');
+		})->name('client.home');
+	});
+});
 
-	Route::group(['middleware' => 'check_access_level:1'], function(){
-		Route::resource('usuarios', App\Http\Controllers\UserController::class)->names('users')->parameters(['usuarios' => 'user']);
+Route::prefix('admin')->group(function(){
+	Route::group(['middleware' => ['auth']], function(){
+		Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+		Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+		Route::group(['middleware' => 'check_access_level:1'], function(){
+			Route::resource('usuarios', App\Http\Controllers\UserController::class)->names('users')->parameters(['usuarios' => 'user']);
+			Route::resource('clientes', App\Http\Controllers\ClientController::class)->names('clients')->parameters(['clientes' => 'client']);
+		});
 	});
 });

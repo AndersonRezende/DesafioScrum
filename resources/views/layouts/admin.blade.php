@@ -41,7 +41,7 @@
                     <a class="nav-link" href="{{ route('users.index') }}">Usuários</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Profile</a>
+                    <a class="nav-link" href="{{ route('clients.index') }}">Clientes</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">Switch account</a>
